@@ -1,3 +1,9 @@
+require "mundipagg"
+require 'simplecov'
+SimpleCov.start
+
+I18n.enforce_available_locales = true
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

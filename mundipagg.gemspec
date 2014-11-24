@@ -14,6 +14,9 @@ Gem::Specification.new do |s|
   s.description = %q{Gem to integrate with Mundipagg's webservice.}
 
   s.add_development_dependency "rspec", "~> 3.1.0"
+  s.add_development_dependency "simplecov", "~> 0.9.0"
+  s.add_dependency "activemodel"
+  s.add_dependency "savon"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
