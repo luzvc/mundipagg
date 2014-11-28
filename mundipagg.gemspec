@@ -4,7 +4,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "mundipagg/version"
 
 Gem::Specification.new do |s|
-  s.name        = "mundipagg"
+  s.name        = "better-mundipagg"
   s.version     = Mundipagg::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Bruno Azisaka"]
