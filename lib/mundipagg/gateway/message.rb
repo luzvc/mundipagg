@@ -9,7 +9,7 @@ module Mundipagg
 
       def translate
         @hash.inject(Hash.new) do |hash, (key, value)|
-          key = Mundipagg::Gateway::Key.new("mun", key).to_s
+          key = Mundipagg::Gateway::Key.new(key).to_s
 
           hash[key] = value.is_a?(Hash) ? Message.new(value).translate : value
           hash

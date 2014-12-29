@@ -3,12 +3,16 @@ require "active_support/core_ext/string/conversions"
 module Mundipagg
   module Gateway
     class Key
-      def initialize(prefix, value)
+      def initialize(value, prefix = "mun")
         @prefix, @value = prefix, value.to_s
       end
 
       def to_s
-        "#{@prefix}:#{camelize}"
+        if @prefix
+          "#{@prefix}:#{camelize}"
+        else
+          camelize
+        end
       end
 
       def camelize
