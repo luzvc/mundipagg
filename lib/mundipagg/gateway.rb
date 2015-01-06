@@ -21,15 +21,16 @@ module Mundipagg
       response = object.class::Response.new(result.body)
 
       params = { body: result.body }
+      options = {}
 
       if response.success?
         message = "Ok"
       else
         message = response.error.message
-        params.merge! error_code: response.error.code
+        options = { error_code: response.error.code }
       end
 
-      ActiveMerchant::Billing::Response.new response.success?, message, params
+      ActiveMerchant::Billing::Response.new response.success?, message, params, options
     end
 
     def apply_merchant_key(body)

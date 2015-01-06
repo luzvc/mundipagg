@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    better-mundipagg (0.1.1)
+    better-mundipagg (0.1.2)
       activemerchant
       activemodel
       savon
