@@ -1,4 +1,4 @@
-RSpec.describe Mundipagg::Gateway::Message do
+RSpec.describe Mundipagg::Message do
   describe "#translate" do
     let(:message) { described_class.new({ that_test: { works: "fine" } }) }
     subject { message.translate }

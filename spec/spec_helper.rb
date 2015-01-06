@@ -1,6 +1,17 @@
+require "simplecov"
+SimpleCov.start do
+  add_filter "spec"
+  add_group "lib", "lib"
+end
+
 require "mundipagg"
-require 'simplecov'
-SimpleCov.start
+require "vcr"
+
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+end
 
 I18n.enforce_available_locales = true
 
@@ -21,7 +32,7 @@ RSpec.configure do |config|
   config.warnings = true
 
   if config.files_to_run.one?
-    config.default_formatter = 'doc'
+    config.default_formatter = "doc"
   end
 
   config.order = :random

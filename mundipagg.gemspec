@@ -15,6 +15,8 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "rspec", "~> 3.1.0"
   s.add_development_dependency "simplecov", "~> 0.9.0"
+  s.add_development_dependency "vcr", "~> 2.9.3"
+  s.add_development_dependency "webmock"
   s.add_dependency "activemodel"
   s.add_dependency "activemerchant"
   s.add_dependency "savon"

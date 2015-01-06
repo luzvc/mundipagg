@@ -1,0 +1,149 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://transaction.mundipaggone.com/MundiPaggService.svc?wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml; charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.0
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 05 Jan 2015 19:19:01 GMT
+      Content-Length:
+      - '1437'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><wsdl:definitions name="MundiPaggService"
+        targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+        xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+        xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+        xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+        xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><wsp:Policy
+        wsu:Id="basicHttp_policy"><wsp:ExactlyOne><wsp:All><sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"><wsp:Policy><sp:TransportToken><wsp:Policy><sp:HttpsToken
+        RequireClientCertificate="false"/></wsp:Policy></sp:TransportToken><sp:AlgorithmSuite><wsp:Policy><sp:Basic256/></wsp:Policy></sp:AlgorithmSuite><sp:Layout><wsp:Policy><sp:Strict/></wsp:Policy></sp:Layout></wsp:Policy></sp:TransportBinding></wsp:All></wsp:ExactlyOne></wsp:Policy><wsdl:types><xsd:schema
+        targetNamespace="http://tempuri.org/Imports"><xsd:import schemaLocation="https://transaction.mundipaggone.com/MundiPaggService.svc?xsd=xsd0"
+        namespace="http://tempuri.org/"/><xsd:import schemaLocation="https://transaction.mundipaggone.com/MundiPaggService.svc?xsd=xsd1"
+        namespace="http://schemas.microsoft.com/2003/10/Serialization/"/><xsd:import
+        schemaLocation="https://transaction.mundipaggone.com/MundiPaggService.svc?xsd=xsd2"
+        namespace="http://schemas.datacontract.org/2004/07/MundiPagg.One.Service.DataContracts"/></xsd:schema></wsdl:types><wsdl:message
+        name="MundiPaggService_CreateOrder_InputMessage"><wsdl:part name="parameters"
+        element="tns:CreateOrder"/></wsdl:message><wsdl:message name="MundiPaggService_CreateOrder_OutputMessage"><wsdl:part
+        name="parameters" element="tns:CreateOrderResponse"/></wsdl:message><wsdl:message
+        name="MundiPaggService_ManageOrder_InputMessage"><wsdl:part name="parameters"
+        element="tns:ManageOrder"/></wsdl:message><wsdl:message name="MundiPaggService_ManageOrder_OutputMessage"><wsdl:part
+        name="parameters" element="tns:ManageOrderResponse"/></wsdl:message><wsdl:message
+        name="MundiPaggService_QueryOrder_InputMessage"><wsdl:part name="parameters"
+        element="tns:QueryOrder"/></wsdl:message><wsdl:message name="MundiPaggService_QueryOrder_OutputMessage"><wsdl:part
+        name="parameters" element="tns:QueryOrderResponse"/></wsdl:message><wsdl:message
+        name="MundiPaggService_GetInstantBuyData_InputMessage"><wsdl:part name="parameters"
+        element="tns:GetInstantBuyData"/></wsdl:message><wsdl:message name="MundiPaggService_GetInstantBuyData_OutputMessage"><wsdl:part
+        name="parameters" element="tns:GetInstantBuyDataResponse"/></wsdl:message><wsdl:message
+        name="MundiPaggService_RetryOrder_InputMessage"><wsdl:part name="parameters"
+        element="tns:RetryOrder"/></wsdl:message><wsdl:message name="MundiPaggService_RetryOrder_OutputMessage"><wsdl:part
+        name="parameters" element="tns:RetryOrderResponse"/></wsdl:message><wsdl:portType
+        name="MundiPaggService"><wsdl:operation name="CreateOrder"><wsdl:input wsaw:Action="http://tempuri.org/MundiPaggService/CreateOrder"
+        message="tns:MundiPaggService_CreateOrder_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/MundiPaggService/CreateOrderResponse"
+        message="tns:MundiPaggService_CreateOrder_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="ManageOrder"><wsdl:input wsaw:Action="http://tempuri.org/MundiPaggService/ManageOrder"
+        message="tns:MundiPaggService_ManageOrder_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/MundiPaggService/ManageOrderResponse"
+        message="tns:MundiPaggService_ManageOrder_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="QueryOrder"><wsdl:input wsaw:Action="http://tempuri.org/MundiPaggService/QueryOrder"
+        message="tns:MundiPaggService_QueryOrder_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/MundiPaggService/QueryOrderResponse"
+        message="tns:MundiPaggService_QueryOrder_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="GetInstantBuyData"><wsdl:input wsaw:Action="http://tempuri.org/MundiPaggService/GetInstantBuyData"
+        message="tns:MundiPaggService_GetInstantBuyData_InputMessage"/><wsdl:output
+        wsaw:Action="http://tempuri.org/MundiPaggService/GetInstantBuyDataResponse"
+        message="tns:MundiPaggService_GetInstantBuyData_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="RetryOrder"><wsdl:input wsaw:Action="http://tempuri.org/MundiPaggService/RetryOrder"
+        message="tns:MundiPaggService_RetryOrder_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/MundiPaggService/RetryOrderResponse"
+        message="tns:MundiPaggService_RetryOrder_OutputMessage"/></wsdl:operation></wsdl:portType><wsdl:binding
+        name="basicHttp" type="tns:MundiPaggService"><wsp:PolicyReference URI="#basicHttp_policy"/><soap:binding
+        transport="http://schemas.xmlsoap.org/soap/http"/><wsdl:operation name="CreateOrder"><soap:operation
+        soapAction="http://tempuri.org/MundiPaggService/CreateOrder" style="document"/><wsdl:input><soap:body
+        use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation><wsdl:operation
+        name="ManageOrder"><soap:operation soapAction="http://tempuri.org/MundiPaggService/ManageOrder"
+        style="document"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body
+        use="literal"/></wsdl:output></wsdl:operation><wsdl:operation name="QueryOrder"><soap:operation
+        soapAction="http://tempuri.org/MundiPaggService/QueryOrder" style="document"/><wsdl:input><soap:body
+        use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation><wsdl:operation
+        name="GetInstantBuyData"><soap:operation soapAction="http://tempuri.org/MundiPaggService/GetInstantBuyData"
+        style="document"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body
+        use="literal"/></wsdl:output></wsdl:operation><wsdl:operation name="RetryOrder"><soap:operation
+        soapAction="http://tempuri.org/MundiPaggService/RetryOrder" style="document"/><wsdl:input><soap:body
+        use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation></wsdl:binding><wsdl:service
+        name="MundiPaggService"><wsdl:port name="basicHttp" binding="tns:basicHttp"><soap:address
+        location="https://transaction.mundipaggone.com/MundiPaggService.svc"/></wsdl:port></wsdl:service></wsdl:definitions>
+    http_version:
+  recorded_at: Mon, 05 Jan 2015 19:19:01 GMT
+- request:
+    method: post
+    uri: https://transaction.mundipaggone.com/MundiPaggService.svc
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://tempuri.org/"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mun="http://schemas.datacontract.org/2004/07/MundiPagg.One.Service.DataContracts"><env:Body><tns:ManageOrder><tns:manageOrderRequest><mun:ManageCreditCardTransactionCollection><mun:ManageCreditCardTransactionRequest><mun:AmountInCents>1</mun:AmountInCents><mun:TransactionKey>e4c764a4-8ea9-499b-9dd9-25fd4f0a7202</mun:TransactionKey></mun:ManageCreditCardTransactionRequest></mun:ManageCreditCardTransactionCollection><mun:ManageOrderOperationEnum>Void</mun:ManageOrderOperationEnum><mun:MerchantKey>MERCHANT-KEY</mun:MerchantKey><mun:OrderKey>0562f9ed-a578-4b4a-9e60-db9c9b25f625</mun:OrderKey></tns:manageOrderRequest></tns:ManageOrder></env:Body></env:Envelope>
+    headers:
+      Soapaction:
+      - '"http://tempuri.org/MundiPaggService/ManageOrder"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '931'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.0
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 05 Jan 2015 19:19:04 GMT
+      Content-Length:
+      - '1017'
+    body:
+      encoding: UTF-8
+      string: <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><ManageOrderResponse
+        xmlns="http://tempuri.org/"><ManageOrderResult xmlns:a="http://schemas.datacontract.org/2004/07/MundiPagg.One.Service.DataContracts"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><a:ManageOrderOperationEnum>Void</a:ManageOrderOperationEnum><a:MundiPaggTimeInMilliseconds>159</a:MundiPaggTimeInMilliseconds><a:OrderKey>0562f9ed-a578-4b4a-9e60-db9c9b25f625</a:OrderKey><a:OrderReference
+        i:nil="true"/><a:OrderStatusEnum>Canceled</a:OrderStatusEnum><a:RequestKey>2b869c5c-c8a4-49a9-b883-23c995bb4b6d</a:RequestKey><a:Success>true</a:Success><a:Version>1.0</a:Version><a:CreditCardTransactionResultCollection><a:CreditCardTransactionResult><a:AcquirerMessage>Stone|APPR</a:AcquirerMessage><a:AcquirerReturnCode>0000</a:AcquirerReturnCode><a:AmountInCents>1</a:AmountInCents><a:AuthorizationCode>505548</a:AuthorizationCode><a:AuthorizedAmountInCents>1</a:AuthorizedAmountInCents><a:CapturedAmountInCents>1</a:CapturedAmountInCents><a:CreditCardNumber>555566****8884</a:CreditCardNumber><a:CreditCardOperationEnum>AuthAndCapture</a:CreditCardOperationEnum><a:CreditCardTransactionStatusEnum>Refunded</a:CreditCardTransactionStatusEnum><a:CustomStatus
+        i:nil="true"/><a:DueDate i:nil="true"/><a:ExternalTimeInMilliseconds>1637</a:ExternalTimeInMilliseconds><a:InstantBuyKey>95c705cc-1549-4cd0-a752-82a891412daa</a:InstantBuyKey><a:RefundedAmountInCents>1</a:RefundedAmountInCents><a:Success>true</a:Success><a:TransactionIdentifier>10550002425058</a:TransactionIdentifier><a:TransactionKey>e4c764a4-8ea9-499b-9dd9-25fd4f0a7202</a:TransactionKey><a:TransactionReference>3af76942-e27f-44ac-97fe-209067b18bda</a:TransactionReference><a:UniqueSequentialNumber>10550002425058</a:UniqueSequentialNumber><a:VoidedAmountInCents
+        i:nil="true"/><a:OriginalAcquirerReturnCollection i:nil="true"/></a:CreditCardTransactionResult></a:CreditCardTransactionResultCollection><a:BoletoTransactionResultCollection/><a:MundiPaggSuggestion
+        i:nil="true"/><a:ErrorReport i:nil="true"/></ManageOrderResult></ManageOrderResponse></s:Body></s:Envelope>
+    http_version:
+  recorded_at: Mon, 05 Jan 2015 19:19:04 GMT
+recorded_with: VCR 2.9.3

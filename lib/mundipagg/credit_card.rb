@@ -1,12 +1,15 @@
 module Mundipagg
   class CreditCard < ActiveMerchant::Billing::CreditCard
-    attr_accessor :installment_count, :merchant_key
+    attr_accessor :installment_count
 
     def brand_name
-      name = brand
-      name = "mastercard" if name == "master"
+      return "" if !brand.present?
 
-      name.capitalize
+      if brand == "master"
+        "Mastercard"
+      else
+        brand.capitalize
+      end
     end
 
     def payload(amount)
@@ -29,34 +32,20 @@ module Mundipagg
       {
         amount_in_cents: amount,
         currency_iso_enum: "BRL",
-        merchant_key: merchant_key,
-
-        credit_card_transaction_collection: {
-          credit_card_transaction: content
-        }
+        credit_card_transaction_collection: { credit_card_transaction: content }
       }
     end
 
-    class Response
-      attr_reader :payload
-
-      def initialize(payload = {})
-        @payload = payload[:create_order_response][:create_order_result]
+    class Response < Mundipagg::Response
+      def payload
+        body[:create_order_response][:create_order_result]
       end
 
-      def result
-        payload[:credit_card_transaction_result_collection][:credit_card_transaction_result]
-      end
-
-      def success?
-        payload[:success]
-      end
-
-      def error
-        message = result[:acquirer_message].split("|").last
-        code = result[:acquirer_return_code]
-
-        ::Mundipagg::Error.new message, code
+      def error_item
+        {
+          description: payload[:acquirer_message].split("|").last,
+          error_code: payload[:acquirer_return_code]
+        }
       end
     end
   end
