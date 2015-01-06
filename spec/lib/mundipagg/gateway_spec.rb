@@ -38,7 +38,7 @@ RSpec.describe Mundipagg::Gateway do
       }).and_return(gateway_response)
 
       response = gateway.purchase(100, boleto)
-      expect(response).to be_a(Mundipagg::Boleto::Response)
+      expect(response).to be_a(ActiveMerchant::Billing::Response)
       expect(response).to be_success
     end
   end
@@ -75,7 +75,7 @@ RSpec.describe Mundipagg::Gateway do
       }).and_return(gateway_response)
 
       response = gateway.refund(100, refund)
-      expect(response).to be_a(Mundipagg::Refund::Response)
+      expect(response).to be_a(ActiveMerchant::Billing::Response)
       expect(response).to be_success
     end
   end

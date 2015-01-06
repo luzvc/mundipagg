@@ -17,8 +17,19 @@ module Mundipagg
     def call(amount, object, method)
       payload = apply_merchant_key object.payload(amount)
 
-      response = client.send(method, payload)
-      object.class::Response.new(response.body)
+      result = client.send(method, payload)
+      response = object.class::Response.new(result.body)
+
+      params = { body: result.body }
+
+      if response.success?
+        message = "Ok"
+      else
+        message = response.error.message
+        params.merge! error_code: response.error.code
+      end
+
+      ActiveMerchant::Billing::Response.new response.success?, message, params
     end
 
     def apply_merchant_key(body)
