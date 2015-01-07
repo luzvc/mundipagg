@@ -21,10 +21,10 @@ module Mundipagg
       response = object.class::Response.new(result.body)
 
       params = { body: result.body }
-      options = {}
 
       if response.success?
         message = "Ok"
+        options = {}
       else
         message = response.error.message
         options = { error_code: response.error.code }

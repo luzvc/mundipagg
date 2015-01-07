@@ -12,8 +12,6 @@ module Mundipagg
       payload[:success]
     end
 
-    alias :valid? :success?
-
     def error
       ::Mundipagg::Error.new error_item[:description], error_item[:error_code]
     rescue NoMethodError
