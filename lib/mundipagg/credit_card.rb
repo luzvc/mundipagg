@@ -43,8 +43,8 @@ module Mundipagg
 
       def error_item
         {
-          description: payload[:acquirer_message].split("|").last,
-          error_code: payload[:acquirer_return_code]
+          description: payload[:credit_card_transaction_result_collection][:credit_card_transaction_result][:acquirer_message].split("|").last,
+          error_code: payload[:credit_card_transaction_result_collection][:credit_card_transaction_result][:acquirer_return_code]
         }
       end
     end
