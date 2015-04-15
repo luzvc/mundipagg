@@ -6,19 +6,16 @@ RSpec.describe Mundipagg::CreditCard do
     let(:credit_card) { described_class.new brand: brand }
     subject { credit_card.brand_name }
 
-    context "when brand is master" do
-      let(:brand) { "master" }
-      it { is_expected.to eq "Mastercard" }
-    end
-
-    context "when brand is visa" do
-      let(:brand) { "visa" }
-      it { is_expected.to eq "Visa" }
-    end
-
-    context "when brand is nil" do
-      let(:brand) { nil }
-      it { is_expected.to eq "" }
+    [
+      ["master", "Mastercard"],
+      ["american_express", "Amex"],
+      ["visa", "Visa"],
+      [nil, ""]
+    ].each do |(input, output)|
+      context "when brand is #{input}" do
+        let(:brand) { input }
+        it { is_expected.to eq output }
+      end
     end
   end
 

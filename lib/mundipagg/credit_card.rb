@@ -5,8 +5,11 @@ module Mundipagg
     def brand_name
       return "" if !brand.present?
 
-      if brand == "master"
+      case brand
+      when "master"
         "Mastercard"
+      when "american_express"
+        "Amex"
       else
         brand.capitalize
       end
