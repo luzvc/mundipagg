@@ -92,8 +92,12 @@ RSpec.describe Mundipagg::CreditCard::Response do
     {
       create_order_response: {
         create_order_result: {
-          acquirer_message: "Rede|Out of Money",
-          acquirer_return_code: "E666"
+          credit_card_transaction_result_collection: {
+            credit_card_transaction_result: {
+              acquirer_message: "Rede|Out of Money",
+              acquirer_return_code: "E666"
+            }
+          }
         }
       }
     }
@@ -103,8 +107,12 @@ RSpec.describe Mundipagg::CreditCard::Response do
   describe "#payload" do
     it do
       expect(response.payload).to eq({
-        acquirer_message: "Rede|Out of Money",
-        acquirer_return_code: "E666"
+        credit_card_transaction_result_collection: {
+          credit_card_transaction_result: {
+            acquirer_message: "Rede|Out of Money",
+            acquirer_return_code: "E666"
+          }
+        }
       })
     end
   end
