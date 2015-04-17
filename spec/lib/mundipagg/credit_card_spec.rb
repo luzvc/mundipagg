@@ -91,7 +91,7 @@ RSpec.describe Mundipagg::CreditCard::Response do
         create_order_result: {
           credit_card_transaction_result_collection: {
             credit_card_transaction_result: {
-              acquirer_message: "Rede|Out of Money",
+              acquirer_message: "Rede|#{error_code}",
               acquirer_return_code: "E666"
             }
           }
@@ -99,6 +99,9 @@ RSpec.describe Mundipagg::CreditCard::Response do
       }
     }
   end
+
+  let(:error_code) { "1000" }
+
   let(:response) { described_class.new body }
 
   describe "#payload" do
@@ -106,7 +109,7 @@ RSpec.describe Mundipagg::CreditCard::Response do
       expect(response.payload).to eq({
         credit_card_transaction_result_collection: {
           credit_card_transaction_result: {
-            acquirer_message: "Rede|Out of Money",
+            acquirer_message: "Rede|#{error_code}",
             acquirer_return_code: "E666"
           }
         }
@@ -117,6 +120,23 @@ RSpec.describe Mundipagg::CreditCard::Response do
   describe "#error" do
     it { expect(response.error).to be_a(Mundipagg::Error) }
     it { expect(response.error.code).to eq("E666") }
-    it { expect(response.error.message).to eq("Out of Money") }
+    it { expect(response.error.message).to eq("Transação não autorizada.") }
+  end
+
+  describe "#error_description", focus: true do
+    [
+      ["1000", "Transação não autorizada."],
+      ["1011", "Cartão inválido."],
+      ["1013", "Transação não autorizada."],
+      ["1025", "Cartão bloqueado."],
+      ["2001", "Cartão vencido."],
+      ["9111", "Time-out na transação."],
+      ["WTF", "Transação não autorizada."]
+    ].each do |(code, message)|
+      context "when the code is #{code}" do
+        let(:error_code) { code }
+        it { expect(response.error_description).to eq(message) }
+      end
+    end
   end
 end
