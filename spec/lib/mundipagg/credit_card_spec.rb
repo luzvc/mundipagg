@@ -123,7 +123,7 @@ RSpec.describe Mundipagg::CreditCard::Response do
     it { expect(response.error.message).to eq("Transação não autorizada.") }
   end
 
-  describe "#error_description", focus: true do
+  describe "#error_description" do
     [
       ["1000", "Transação não autorizada."],
       ["1011", "Cartão inválido."],
