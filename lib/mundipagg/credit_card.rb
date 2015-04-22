@@ -49,22 +49,28 @@ module Mundipagg
       end
 
       def error_description
-        case acquirer_message_code
+        code = acquirer_message_code
+
+        default_message = case code
         when "1000"
-          I18n.t("1000", scope: "mundipagg.errors", default: "Transação não autorizada.")
+          "Transação não autorizada."
         when "1011"
-          I18n.t("1011", scope: "mundipagg.errors", default: "Cartão inválido.")
+          "Cartão inválido."
         when "1013"
-          I18n.t("1013", scope: "mundipagg.errors", default: "Transação não autorizada.")
+          "Transação não autorizada."
         when "1025"
-          I18n.t("1025", scope: "mundipagg.errors", default: "Cartão bloqueado.")
+          "Cartão bloqueado."
         when "2001"
-          I18n.t("2001", scope: "mundipagg.errors", default: "Cartão vencido.")
+          "Cartão vencido."
         when "9111"
-          I18n.t("9111", scope: "mundipagg.errors", default: "Time-out na transação.")
+          "Time-out na transação."
         else
-          I18n.t("default", scope: "mundipagg.errors", default: "Transação não autorizada.")
+          "Transação não autorizada. Código %{code}."
         end
+
+        I18n.t code, scope: "mundipagg.errors",
+          default: default_message,
+          code: acquirer_message_code
       end
 
       def acquirer_return_code

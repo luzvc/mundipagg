@@ -131,7 +131,7 @@ RSpec.describe Mundipagg::CreditCard::Response do
       ["1025", "Cartão bloqueado."],
       ["2001", "Cartão vencido."],
       ["9111", "Time-out na transação."],
-      ["WTF", "Transação não autorizada."]
+      ["WTF", "Transação não autorizada. Código WTF."]
     ].each do |(code, message)|
       context "when the code is #{code}" do
         let(:error_code) { code }
