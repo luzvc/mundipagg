@@ -70,7 +70,8 @@ module Mundipagg
 
         I18n.t code, scope: "mundipagg.errors",
           default: default_message,
-          code: acquirer_message_code
+          code: acquirer_message_code,
+          acquirer_message: acquirer_message
       end
 
       def acquirer_return_code
@@ -78,7 +79,11 @@ module Mundipagg
       end
 
       def acquirer_message_code
-        @acquirer_message_code ||= payload[:credit_card_transaction_result_collection][:credit_card_transaction_result][:acquirer_message].split("|").last
+        @acquirer_message_code ||= acquirer_message.split("|").last
+      end
+
+      def acquirer_message
+        payload[:credit_card_transaction_result_collection][:credit_card_transaction_result][:acquirer_message]
       end
     end
   end
