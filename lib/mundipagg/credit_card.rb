@@ -52,21 +52,24 @@ module Mundipagg
         code = acquirer_message_code
 
         default_message = case code
-        when "1000"
-          "Transação não autorizada."
-        when "1011"
-          "Cartão inválido."
-        when "1013"
-          "Transação não autorizada."
-        when "1025"
-          "Cartão bloqueado."
-        when "2001"
-          "Cartão vencido."
-        when "9111"
-          "Time-out na transação."
-        else
-          "Transação não autorizada. Código %{code}."
-        end
+          when "1000"
+            "Transação não autorizada."
+          when "1001"
+            "Cartão com vencimento inválido."
+          when "1011"
+            "Cartão inválido."
+          when "1013"
+            "Transação não autorizada."
+          when "1025"
+            "Cartão bloqueado."
+          when "2001"
+            "Cartão vencido."
+          when "9111"
+            "Time-out na transação."
+          else
+            code = "default"
+            "Transação não autorizada. Código %{code}."
+          end
 
         I18n.t code, scope: "mundipagg.errors",
           default: default_message,

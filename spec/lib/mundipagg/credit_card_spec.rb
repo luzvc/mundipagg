@@ -126,6 +126,7 @@ RSpec.describe Mundipagg::CreditCard::Response do
   describe "#error_description" do
     [
       ["1000", "Transação não autorizada."],
+      ["1001", "Cartão com vencimento inválido."],
       ["1011", "Cartão inválido."],
       ["1013", "Transação não autorizada."],
       ["1025", "Cartão bloqueado."],
