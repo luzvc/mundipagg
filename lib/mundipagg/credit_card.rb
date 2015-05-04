@@ -10,6 +10,8 @@ module Mundipagg
         "Mastercard"
       when "american_express"
         "Amex"
+      when "diners_club"
+        "Diners"
       else
         brand.capitalize
       end
@@ -49,22 +51,22 @@ module Mundipagg
       end
 
       def error_description
-        code = acquirer_message_code
+        code = "c#{acquirer_message_code}"
 
         default_message = case code
-          when "1000"
+          when "c1000"
             "Transação não autorizada."
-          when "1001"
+          when "c1001"
             "Cartão com vencimento inválido."
-          when "1011"
+          when "c1011"
             "Cartão inválido."
-          when "1013"
+          when "c1013"
             "Transação não autorizada."
-          when "1025"
+          when "c1025"
             "Cartão bloqueado."
-          when "2001"
+          when "c2001"
             "Cartão vencido."
-          when "9111"
+          when "c9111"
             "Time-out na transação."
           else
             code = "default"

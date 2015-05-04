@@ -13,7 +13,8 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
 end
 
-I18n.enforce_available_locales = true
+I18n.default_locale = :en
+I18n.load_path = Dir["spec/fixtures/*.yml"]
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

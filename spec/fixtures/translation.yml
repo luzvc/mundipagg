@@ -1,0 +1,11 @@
+pt:
+  mundipagg:
+    errors:
+      c1000: "Sua operadora do cartão de crédito não autorizou o pagamento. Você pode escolher outra forma de pagamento ou entrar em contato com o atendimento ao cliente de seu cartão."
+      c1013: "Sua operadora do cartão de crédito não autorizou o pagamento. Você pode escolher outra forma de pagamento ou entrar em contato com o atendimento ao cliente de seu cartão."
+      c1001: "A data de vencimento do seu cartão parece estar incorreta. Verifique se você a digitou corretamente."
+      c2001: "A data de vencimento do seu cartão parece estar incorreta. Verifique se você a digitou corretamente."
+      c1025: "Seu cartão de crédito parece estar bloqueado. Você pode escolher outra forma de pagamento ou entrar em contato com o atendimento ao cliente de seu cartão."
+      c9111: "A operadora do cartão de crédito não está respondendo no momento. Por favor, tente outra forma de pagamento."
+      default: "Não foi possível processar seu pagamento. Você pode escolher outra forma de pagamento ou pode entrar em contato com nosso suporte ao cliente (no canto inferior esquerdo da sua tela) e informar o código \"%{code}\"."
+

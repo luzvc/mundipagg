@@ -9,6 +9,7 @@ RSpec.describe Mundipagg::CreditCard do
     [
       ["master", "Mastercard"],
       ["american_express", "Amex"],
+      ["diners_club", "Diners"],
       ["visa", "Visa"],
       [nil, ""]
     ].each do |(input, output)|
@@ -124,20 +125,48 @@ RSpec.describe Mundipagg::CreditCard::Response do
   end
 
   describe "#error_description" do
-    [
-      ["1000", "Transação não autorizada."],
-      ["1001", "Cartão com vencimento inválido."],
-      ["1011", "Cartão inválido."],
-      ["1013", "Transação não autorizada."],
-      ["1025", "Cartão bloqueado."],
-      ["2001", "Cartão vencido."],
-      ["9111", "Time-out na transação."],
-      ["WTF", "Transação não autorizada. Código WTF."]
-    ].each do |(code, message)|
-      context "when the code is #{code}" do
-        let(:error_code) { code }
-        it { expect(response.error_description).to eq(message) }
+    context "using default messages" do
+      [
+        ["1000", "Transação não autorizada."],
+        ["1001", "Cartão com vencimento inválido."],
+        ["1011", "Cartão inválido."],
+        ["1013", "Transação não autorizada."],
+        ["1025", "Cartão bloqueado."],
+        ["2001", "Cartão vencido."],
+        ["9111", "Time-out na transação."],
+        ["WTF", "Transação não autorizada. Código WTF."]
+      ].each do |(code, message)|
+        context "when the code is #{code}" do
+          let(:error_code) { code }
+          it { expect(response.error_description).to eq(message) }
+        end
       end
+    end
+
+    context "translating the messages" do
+      before do
+        I18n.locale = :pt
+      end
+
+      after do
+        I18n.locale = I18n.default_locale
+      end
+
+      [
+        ["1000", "Sua operadora do cartão de crédito não autorizou o pagamento. Você pode escolher outra forma de pagamento ou entrar em contato com o atendimento ao cliente de seu cartão."],
+        ["1013", "Sua operadora do cartão de crédito não autorizou o pagamento. Você pode escolher outra forma de pagamento ou entrar em contato com o atendimento ao cliente de seu cartão."],
+        ["1001", "A data de vencimento do seu cartão parece estar incorreta. Verifique se você a digitou corretamente."],
+        ["2001", "A data de vencimento do seu cartão parece estar incorreta. Verifique se você a digitou corretamente."],
+        ["1025", "Seu cartão de crédito parece estar bloqueado. Você pode escolher outra forma de pagamento ou entrar em contato com o atendimento ao cliente de seu cartão."],
+        ["9111", "A operadora do cartão de crédito não está respondendo no momento. Por favor, tente outra forma de pagamento."],
+        ["WTF", "Não foi possível processar seu pagamento. Você pode escolher outra forma de pagamento ou pode entrar em contato com nosso suporte ao cliente (no canto inferior esquerdo da sua tela) e informar o código \"WTF\"."]
+      ].each do |(code, message)|
+        context "when the code is #{code}" do
+          let(:error_code) { code }
+          it { expect(response.error_description).to eq(message) }
+        end
+      end
+
     end
   end
 end
