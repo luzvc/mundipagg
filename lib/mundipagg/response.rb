@@ -14,8 +14,8 @@ module Mundipagg
 
     def error
       ::Mundipagg::Error.new error_item[:description], error_item[:error_code]
-    rescue NoMethodError
-      nil
+    rescue NoMethodError => event
+      ::Mundipagg::Error.new "Unknown error", 0
     end
 
     def error_item

@@ -37,7 +37,9 @@ RSpec.describe Mundipagg::Response do
         allow(subject).to receive(:error_item).and_return(nil)
       end
 
-      it { expect(subject.error).to be_nil }
+      it { expect(subject.error).to be_a(Mundipagg::Error) }
+      it { expect(subject.error.message).to eq("Unknown error") }
+      it { expect(subject.error.code).to eq(0) }
     end
   end
 end
