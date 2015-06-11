@@ -7,8 +7,8 @@ module Mundipagg
         amount_in_cents: amount,
         bank_number: bank_number,
         days_to_add_in_boleto_expiration_date: days_to_expire || 5,
-        nosso_numero: bank_code,
-        instructions: instructions
+        instructions: instructions,
+        nosso_numero: bank_code
       }
 
       {
