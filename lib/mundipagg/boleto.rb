@@ -1,6 +1,6 @@
 module Mundipagg
   class Boleto < ActiveMerchant::Billing::Model
-    attr_accessor :bank_number, :days_to_expire, :bank_code
+    attr_accessor :bank_number, :days_to_expire, :bank_code, :instructions
 
     def payload(amount)
       content = {
@@ -8,6 +8,7 @@ module Mundipagg
         bank_number: bank_number,
         days_to_add_in_boleto_expiration_date: days_to_expire || 5,
         nosso_numero: bank_code,
+        instructions: instructions
       }
 
       {

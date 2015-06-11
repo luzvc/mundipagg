@@ -9,7 +9,8 @@ RSpec.describe Mundipagg::Gateway do
   end
 
   describe "#purchase" do
-    let(:boleto) { Mundipagg::Boleto.new bank_number: 123, bank_code: 987 }
+    let(:boleto) { Mundipagg::Boleto.new bank_number: 123, bank_code: 987,
+                   instructions: "Pedido #123" }
     let(:body) {
       {
         create_order_response: {
@@ -32,7 +33,8 @@ RSpec.describe Mundipagg::Gateway do
             amount_in_cents: 100,
             bank_number: 123,
             days_to_add_in_boleto_expiration_date: 5,
-            nosso_numero: 987
+            nosso_numero: 987,
+            instructions: "Pedido #123"
           }
         }
       }).and_return(gateway_response)

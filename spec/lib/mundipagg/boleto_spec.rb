@@ -4,7 +4,7 @@ RSpec.describe Mundipagg::Boleto do
   describe "#payload" do
     let(:boleto) do
       described_class.new bank_number: 347,
-        bank_code: 123456
+        bank_code: 123456, instructions: "Pedido #123456"
     end
 
     it do
@@ -16,7 +16,8 @@ RSpec.describe Mundipagg::Boleto do
             amount_in_cents: 100,
             bank_number: 347,
             days_to_add_in_boleto_expiration_date: 5,
-            nosso_numero: 123456
+            nosso_numero: 123456,
+            instructions: "Pedido #123456"
           }
         }
       })
