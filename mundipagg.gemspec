@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.name        = "better-mundipagg"
   s.version     = Mundipagg::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Bruno Azisaka"]
-  s.email       = ["bruno@azisaka.com.br"]
+  s.authors     = ["Bruno Azisaka", "Thiago Dias"]
+  s.email       = ["bruno@azisaka.com.br", "tdtadeu@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{Mundipagg Integration}
   s.description = %q{Gem to integrate with Mundipagg's webservice.}
