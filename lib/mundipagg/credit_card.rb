@@ -1,6 +1,6 @@
 module Mundipagg
   class CreditCard < ActiveMerchant::Billing::CreditCard
-    attr_accessor :installment_count
+    attr_accessor :installment_count, :currency
 
     def brand_name
       return "" if !brand.present?
@@ -36,7 +36,7 @@ module Mundipagg
 
       {
         amount_in_cents: amount,
-        currency_iso_enum: "BRL",
+        currency_iso_enum: currency || "BRL",
         credit_card_transaction_collection: { credit_card_transaction: content }
       }
     end

@@ -30,6 +30,16 @@ RSpec.describe Mundipagg::CreditCard do
         name: "Bruno Azisaka Maciel"
     end
 
+    let(:credit_card_with_currency) do
+      described_class.new installment_count: 2,
+        number: "4012001037141112",
+        verification_value: "123",
+        year: 2020,
+        month: 10,
+        name: "Bruno Azisaka Maciel",
+        currency: "CURRENCY"
+    end
+
     context "when under test" do
       before do
         allow(ActiveMerchant::Billing::Base).to receive(:test?).and_return(true)
@@ -53,6 +63,27 @@ RSpec.describe Mundipagg::CreditCard do
             }
           },
           currency_iso_enum: "BRL"
+        })
+      end
+
+      it do
+        expect(credit_card_with_currency.payload(100)).to eq({
+          amount_in_cents: 100,
+          credit_card_transaction_collection: {
+            credit_card_transaction: {
+              amount_in_cents: 100,
+              credit_card_brand_enum: "Visa",
+              credit_card_number: "4012001037141112",
+              credit_card_operation_enum: "AuthAndCapture",
+              exp_month: 10,
+              exp_year: 2020,
+              holder_name: "Bruno Azisaka Maciel",
+              installment_count: 2,
+              security_code: "123",
+              payment_method_code: 1
+            }
+          },
+          currency_iso_enum: "CURRENCY"
         })
       end
     end
