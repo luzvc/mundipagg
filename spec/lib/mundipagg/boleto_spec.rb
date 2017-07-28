@@ -6,7 +6,7 @@ RSpec.describe Mundipagg::Boleto do
       described_class.new bank_number: 347, bank_code: 123456,
         instructions: "Pedido #123456",
         document_number: "123", document_type: "cpf", name: "Buyer Name",
-        person_Type: "fisica", complement: "apt 1", city: "Sao Paulo",
+        person_type: "fisica", complement: "apt 1", city: "Sao Paulo",
         country: "Brasil", district: "Centro", number: "1", state: "Sao Paulo",
         street: "Rua 1", zip_code: "00000-000"
     end
