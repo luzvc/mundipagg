@@ -33,6 +33,7 @@ RSpec.describe Mundipagg::Gateway do
       expect(client).to receive(:create_order).with({
         amount_in_cents: 100,
         currency_iso_enum: "BRL",
+        merchant_key: "MERCHANT-KEY",
         boleto_transaction_collection: [
           {
             amount_in_cents: 100,
