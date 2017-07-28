@@ -8,9 +8,9 @@ module Mundipagg
       {
         amount_in_cents: amount,
         currency_iso_enum: "BRL",
-        boleto_transaction_collection: [
-          payload_transaction_collection(amount)
-        ],
+        boleto_transaction_collection: {
+          boleto_transaction: payload_transaction_collection(amount)
+        },
         buyer: payload_buyer
       }
     end
