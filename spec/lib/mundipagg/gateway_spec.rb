@@ -9,8 +9,14 @@ RSpec.describe Mundipagg::Gateway do
   end
 
   describe "#purchase" do
-    let(:boleto) { Mundipagg::Boleto.new bank_number: 123, bank_code: 987,
-                   instructions: "Pedido #123" }
+    let(:boleto) do
+      Mundipagg::Boleto.new bank_number: 347, bank_code: 123456,
+        instructions: "Pedido #123456",
+        document_number: "123", document_type: "cpf", name: "Buyer Name",
+        person_Type: "fisica", complement: "apt 1", city: "Sao Paulo",
+        country: "Brasil", district: "Centro", number: "1", state: "Sao Paulo",
+        street: "Rua 1", zip_code: "00000-000"
+    end
     let(:body) {
       {
         create_order_response: {
@@ -27,15 +33,33 @@ RSpec.describe Mundipagg::Gateway do
       expect(client).to receive(:create_order).with({
         amount_in_cents: 100,
         currency_iso_enum: "BRL",
-        merchant_key: "MERCHANT-KEY",
-        boleto_transaction_collection: {
-          boleto_transaction: {
+        boleto_transaction_collection: [
+          {
             amount_in_cents: 100,
-            bank_number: 123,
+            bank_number: 347,
             days_to_add_in_boleto_expiration_date: 5,
-            nosso_numero: 987,
-            instructions: "Pedido #123"
+            nosso_numero: 123456,
+            instructions: "Pedido #123456"
           }
+        ],
+        buyer: {
+          document_number: "123",
+          document_type: "cpf",
+          name: "Buyer Name",
+          person_type: "fisica",
+          address_collection: [
+            {
+              address_type: "residencial",
+              complement: "apt 1",
+              city: "Sao Paulo",
+              country: "Brasil",
+              district: "Centro",
+              number: "1",
+              state: "Sao Paulo",
+              street: "Rua 1",
+              zip_code: "00000-000"
+            }
+          ]
         }
       }).and_return(gateway_response)
 
